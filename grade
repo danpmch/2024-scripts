@@ -1,0 +1,51 @@
+#!/bin/bash
+
+ROOT=`pwd`
+DIRS=`ls | xargs`
+FOUND=false
+for DIR in $@
+do
+  echo "Grading $DIR..."
+
+  # run the executable
+  while read CONTINUE
+  do
+    if [ -z $CONTINUE ]; then
+      break
+    fi
+
+    ./$DIR/main
+  done
+
+  # find the writeup
+  VIEWER="libreoffice"
+  WRITEUP=`find ./$DIR -name "*.doc*"`
+  echo "Writeup: $WRITEUP"
+  if [ -z $WRITEUP ]; then
+    VIEWER="zathura"
+    WRITEUP=`find ./$DIR -name "*.pdf"`
+    echo "Writeup: $WRITEUP"
+  fi
+  if [ -z $WRITEUP ]; then
+    VIEWER="st -e vim"
+    WRITEUP=`find ./$DIR -name "*.txt"`
+    echo "Writeup: $WRITEUP"
+  fi
+
+  if [ -n $WRITEUP ]; then
+    $VIEWER $WRITEUP &
+  else
+    echo "ERROR: no writeup"
+  fi
+
+  # open grading doc
+  # libreoffice ../*.doc* &
+  # run script to generate .odt gradesheet based on template
+  st -e python2 ../../gradesheet_script.py ../*.odt ./$DIR/ &
+
+  # view the source
+  ctags ./$DIR/*
+  vim `find ./$DIR -name "*.h" -o -name "*.cpp"`
+
+done
+

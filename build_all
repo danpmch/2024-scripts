@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for dir in `ls | xargs` 
+do
+  SOURCE=`find ./$dir -name "*.h" -o -name "*.cpp"`
+  echo "Compiling $SOURCE..."
+  (g++ $SOURCE -o ./$dir/main -Wall -Wextra -pedantic )
+  echo "done"
+#  echo "`find . -name "*.h" -o -name "*.cpp"`"
+done
