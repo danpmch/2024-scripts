@@ -1,11 +1,13 @@
 #!/bin/bash
 
-ROOT=`pwd`
-DIRS=`ls | xargs`
-FOUND=false
 for DIR in $@
 do
   echo "Grading $DIR..."
+
+  SOURCE=`find ./$DIR -name "*.h" -o -name "*.cpp"`
+  echo "Compiling $SOURCE..."
+  (g++ $SOURCE -o ./$DIR/main -Wall -Wextra -pedantic )
+  echo "done"
 
   # run the executable
   while read CONTINUE

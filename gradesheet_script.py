@@ -94,6 +94,16 @@ numbers actually follow a very predictable pattern, your calls to rand() always 
     "constructor_duplicated":
 '''
 While your derived constructors do pass the appropriate member variables to the parent constructor, they also manually set the same values in their constructor. This defeats the purpose of passing the value to the parent, the derived constructor shouldn't touch the values beyond passing them to the parent.
+''',
+
+    "zero_denom":
+'''
+Your constructor doesn't prevent 0 denominators because when it detects one it doesn't initialize any of the member variables, it just prints a message. Many compilers will automatically initialize ints to 0, so there are very good odds that you will get zero denominators using your class.
+''',
+
+    "neg_num":
+'''
+Your print function will not output the correct format when the numerator is negative but has greater absolute value than the denominator. In that case there is a negative whole number component that won't be displayed as such.
 '''
 }
 
