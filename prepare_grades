@@ -1,13 +1,14 @@
 #!/bin/bash
 
-for DIR in `ls`
+FILES=`find . -name "grade_*.odt"`
+
+for FILE in $FILES
 do
-  FILE=`find ./$DIR -name "grade_*.odt"`
-  FNAME=`find ./$DIR -name "grade_*.odt" | cut -d "/" -f 3 | cut -d "." -f 1`
-  echo $FNAME
+  FNAME=`echo $FILE | cut -d '/' -f 3 | cut -d '.' -f 1`
+  AUTHOR=`echo $FILE | cut -d '/' -f 2`
 
   libreoffice --headless --invisible --convert-to pdf $FILE
-  mv ./$FNAME.pdf ./$DIR-$FNAME.pdf
+  mv ./$FNAME.pdf ./$AUTHOR-$FNAME.pdf
 done
 
 mkdir grades

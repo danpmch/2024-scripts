@@ -104,6 +104,26 @@ Your constructor doesn't prevent 0 denominators because when it detects one it d
     "neg_num":
 '''
 Your print function will not output the correct format when the numerator is negative but has greater absolute value than the denominator. In that case there is a negative whole number component that won't be displayed as such.
+''',
+
+    "no_static":
+'''
+Your internal C style array is not statically allocated.
+''',
+
+    "no_size":
+'''
+Your array class doesn't take a template parameter for the size of the array.
+''',
+
+    "allocation_fail":
+'''
+The internal C-style array is not statically allocated and doesn't use a template size parameter."
+''',
+
+    "no_second_type":
+'''
+Your driver program doesn't test the array with more than one datatype.
 '''
 }
 
