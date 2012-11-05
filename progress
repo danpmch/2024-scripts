@@ -1,0 +1,6 @@
+#!/bin/bash
+
+COMPLETE="`find . -name 'grade_*.odt' | wc -l`"
+TOTAL="`ls | wc -l`"
+
+echo "$COMPLETE/$TOTAL"
