@@ -124,6 +124,11 @@ The internal C-style array is not statically allocated and doesn't use a templat
     "no_second_type":
 '''
 Your driver program doesn't test the array with more than one datatype.
+''',
+
+    "no_bonus":
+'''
+Bonus not attempted
 '''
 }
 
