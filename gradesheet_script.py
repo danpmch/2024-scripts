@@ -129,6 +129,16 @@ Your driver program doesn't test the array with more than one datatype.
     "no_bonus":
 '''
 Bonus not attempted
+''',
+
+    "no_is_open":
+'''
+The is_open() function was not used to test file status before outputting results.
+''',
+
+    "no_map_init":
+'''
+While the map operator[] will create a new mapping if used with a new key, it is bad practice to assume that an int will be initialized to 0 in C/C++. That sort of thing tends to be compiler, system, or standard dependent. It would be better practice to explicitly check for new characters, and then manually add a new key-value pair to the map with a known good initial value.
 '''
 }
 
